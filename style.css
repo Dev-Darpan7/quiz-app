@@ -1,0 +1,46 @@
+* {
+  margin: 0px;
+  
+}
+
+body {
+  background-color: beige;
+  align-items: center;
+  align-content: center;
+  padding: 0px;
+    min-height: 100vh;
+}
+
+button {
+  border-radius: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#question {
+  color: rgb(206, 0, 0);
+  font-family: "Times New Roman", Times, serif;
+}
+h1 {
+  color: rgb(247, 0, 0);
+}
+
+.card {
+    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  width: 50vh;
+  border-radius: 10px;
+  background-color: rgb(101, 87, 87);
+  text-align: center;
+  margin: 0 auto;
+
+}
+#result{
+    background-color: aliceblue;
+    gap: 10px;
+    border-radius: 6px;
+    box-shadow: white;
+}

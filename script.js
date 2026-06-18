@@ -6,6 +6,9 @@ const question = document.getElementById("question");
 // We will show answer buttons inside this div
 const options = document.getElementById("options");
 
+//it will show result
+const result = document.getElementById("result")
+
 // Create an array called quiz
 // An array stores multiple items
 const quiz = [
@@ -36,17 +39,17 @@ question.textContent = quiz[0].question;
 // Replace everything inside the options div
 // with the HTML below
 options.innerHTML = `
-
-<!-- First answer button -->
-<button>${quiz[0].options[0]}</button>
-
-<!-- Second answer button -->
-<button>${quiz[0].options[1]}</button>
-
-<!-- Third answer button -->
-<button>${quiz[0].options[2]}</button>
-
-<!-- Fourth answer button -->
-<button>${quiz[0].options[3]}</button>
-
+<button onclick="checkAnswer('${quiz[0].options[0]}')">${quiz[0].options[0]}</button>
+<button onclick="checkAnswer('${quiz[0].options[1]}')">${quiz[0].options[1]}</button>
+<button onclick="checkAnswer('${quiz[0].options[2]}')">${quiz[0].options[2]}</button>
+<button onclick="checkAnswer('${quiz[0].options[3]}')">${quiz[0].options[3]}</button>
 `;
+
+function checkAnswer(selectedAnwser){
+  if(selectedAnwser===quiz[0].answer)
+    result.textContent="correct";
+  else{
+    result.textContent="wrong";
+  }
+
+}
