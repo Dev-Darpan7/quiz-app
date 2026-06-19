@@ -7,12 +7,11 @@ const question = document.getElementById("question");
 const options = document.getElementById("options");
 
 //it will show result
-const result = document.getElementById("result")
+const result = document.getElementById("result");
 
 // Create an array called quiz
 // An array stores multiple items
 const quiz = [
-
   // First question object
   {
     // The question text
@@ -24,8 +23,31 @@ const quiz = [
     // Correct answer
     answer: "4",
   },
+
+  {
+    question: "Capital of India?",
+    options: ["Mumbai", "Delhi", "Pune", "Chennai"],
+    answer: "Delhi",
+  },
 ];
 
+  let currentQuestion = 0;
+  
+ 
+
+
+function showQuestion(){
+ 
+ question.textContent = quiz[currentQuestion].question;
+ options.innerHTML = `
+  <button onclick="checkAnswer('${quiz[currentQuestion].options[0]}')">${quiz[currentQuestion].options[0]}</button>
+  <button onclick="checkAnswer('${quiz[currentQuestion].options[1]}')">${quiz[currentQuestion].options[1]}</button>
+  <button onclick="checkAnswer('${quiz[currentQuestion].options[2]}')">${quiz[currentQuestion].options[2]}</button>
+  <button onclick="checkAnswer('${quiz[currentQuestion].options[3]}')">${quiz[currentQuestion].options[3]}</button>
+  `;
+
+}
+showQuestion();
 // quiz[0] means:
 // Give me the first item from the quiz array
 //
@@ -34,22 +56,22 @@ const quiz = [
 //
 // Result:
 // "What is 2 + 2?"
-question.textContent = quiz[0].question;
 
 // Replace everything inside the options div
 // with the HTML below
-options.innerHTML = `
-<button onclick="checkAnswer('${quiz[0].options[0]}')">${quiz[0].options[0]}</button>
-<button onclick="checkAnswer('${quiz[0].options[1]}')">${quiz[0].options[1]}</button>
-<button onclick="checkAnswer('${quiz[0].options[2]}')">${quiz[0].options[2]}</button>
-<button onclick="checkAnswer('${quiz[0].options[3]}')">${quiz[0].options[3]}</button>
-`;
 
-function checkAnswer(selectedAnwser){
-  if(selectedAnwser===quiz[0].answer)
-    result.textContent="correct";
-  else{
-    result.textContent="wrong";
+function checkAnswer(selectedAnwser) {
+  if (selectedAnwser === quiz[currentQuestion].answer)
+    result.textContent = "correct";
+  else {
+    result.textContent = "wrong";
   }
-
+currentQuestion++;
+if(currentQuestion<quiz.length){
+showQuestion();}
+else{
+options.innerHTML = "";
+question.textContent="";
 }
+}
+
