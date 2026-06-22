@@ -1,77 +1,79 @@
-// Get the HTML element that has id="question"
-// We will show the question inside this div
-const question = document.getElementById("question");
+  // Get the HTML element that has id="question"
+  // We will show the question inside this div
+  const question = document.getElementById("question");
 
-// Get the HTML element that has id="options"
-// We will show answer buttons inside this div
-const options = document.getElementById("options");
+  // Get the HTML element that has id="options"
+  // We will show answer buttons inside this div
+  const options = document.getElementById("options");
 
-//it will show result
-const result = document.getElementById("result");
+  //it will show result
+  const result = document.getElementById("result");
 
-// Create an array called quiz
-// An array stores multiple items
-const quiz = [
-  // First question object
-  {
-    // The question text
-    question: "What is 2 + 2?",
+  // Create an array called quiz
+  // An array stores multiple items
+  const quiz = [
+    // First question object
+    {
+      // The question text
+      question: "What is 2 + 2?",
 
-    // Array of possible answers
-    options: ["3", "4", "5", "6"],
+      // Array of possible answers
+      options: ["3", "4", "5", "6"],
 
-    // Correct answer
-    answer: "4",
-  },
+      // Correct answer
+      answer: "4",
+    },
 
-  {
-    question: "Capital of India?",
-    options: ["Mumbai", "Delhi", "Pune", "Chennai"],
-    answer: "Delhi",
-  },
-];
+    {
+      question: "Capital of India?",
+      options: ["Mumbai", "Delhi", "Pune", "Chennai"],
+      answer: "Delhi",
+    },
+  ];
 
-  let currentQuestion = 0;
+    let currentQuestion = 0;
+    let score = 0;
   
- 
 
 
-function showQuestion(){
- 
- question.textContent = quiz[currentQuestion].question;
- options.innerHTML = `
-  <button onclick="checkAnswer('${quiz[currentQuestion].options[0]}')">${quiz[currentQuestion].options[0]}</button>
-  <button onclick="checkAnswer('${quiz[currentQuestion].options[1]}')">${quiz[currentQuestion].options[1]}</button>
-  <button onclick="checkAnswer('${quiz[currentQuestion].options[2]}')">${quiz[currentQuestion].options[2]}</button>
-  <button onclick="checkAnswer('${quiz[currentQuestion].options[3]}')">${quiz[currentQuestion].options[3]}</button>
-  `;
+  function showQuestion(){
+  
+  question.textContent = quiz[currentQuestion].question;
+  options.innerHTML = `
+    <button onclick="checkAnswer('${quiz[currentQuestion].options[0]}')">${quiz[currentQuestion].options[0]}</button>
+    <button onclick="checkAnswer('${quiz[currentQuestion].options[1]}')">${quiz[currentQuestion].options[1]}</button>
+    <button onclick="checkAnswer('${quiz[currentQuestion].options[2]}')">${quiz[currentQuestion].options[2]}</button>
+    <button onclick="checkAnswer('${quiz[currentQuestion].options[3]}')">${quiz[currentQuestion].options[3]}</button>
+    `;
 
-}
-showQuestion();
-// quiz[0] means:
-// Give me the first item from the quiz array
-//
-// Then .question means:
-// Give me the question property from that object
-//
-// Result:
-// "What is 2 + 2?"
-
-// Replace everything inside the options div
-// with the HTML below
-
-function checkAnswer(selectedAnwser) {
-  if (selectedAnwser === quiz[currentQuestion].answer)
-    result.textContent = "correct";
-  else {
-    result.textContent = "wrong";
   }
-currentQuestion++;
-if(currentQuestion<quiz.length){
-showQuestion();}
-else{
-options.innerHTML = "";
-question.textContent="";
-}
-}
+  showQuestion();
+  // quiz[0] means:
+  // Give me the first item from the quiz array
+  //
+  // Then .question means:
+  // Give me the question property from that object
+  //
+  // Result:
+  // "What is 2 + 2?"
+
+  // Replace everything inside the options div
+  // with the HTML below
+
+  function checkAnswer(selectedAnwser) {
+    if (selectedAnwser === quiz[currentQuestion].answer){
+      result.textContent = "correct";
+    score++;
+    }else {
+      result.textContent = "wrong";
+    }
+  currentQuestion++;
+  if(currentQuestion<quiz.length){
+  showQuestion();}
+  else{
+  options.innerHTML = "";
+  question.textContent="";
+  result.textContent = `Quiz finished! Your score is ${score} out of ${quiz.length}`;
+  }
+  }
 
