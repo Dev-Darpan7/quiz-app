@@ -1,5 +1,6 @@
   // Get the HTML element that has id="question"
   // We will show the question inside this div
+  const counter= document.getElementById("counter");
   const question = document.getElementById("question");
 
   // Get the HTML element that has id="options"
@@ -37,7 +38,7 @@
 
 
   function showQuestion(){
-  
+  counter.textContent = `Question ${currentQuestion + 1} of ${quiz.length}`;
   question.textContent = quiz[currentQuestion].question;
   options.innerHTML = `
     <button onclick="checkAnswer('${quiz[currentQuestion].options[0]}')">${quiz[currentQuestion].options[0]}</button>
@@ -71,8 +72,10 @@
   if(currentQuestion<quiz.length){
   showQuestion();}
   else{
+
   options.innerHTML = "";
   question.textContent="";
+  counter.textContent = "";gi
   result.textContent = `Quiz finished! Your score is ${score} out of ${quiz.length}`;
   }
   }
