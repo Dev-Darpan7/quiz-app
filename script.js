@@ -9,7 +9,7 @@
 
   //it will show result
   const result = document.getElementById("result");
-
+const restartBtn=document.getElementById("restartBtn")
   // Create an array called quiz
   // An array stores multiple items
   const quiz = [
@@ -49,6 +49,15 @@
 
   }
   showQuestion();
+
+
+function restartQuiz() {
+  currentQuestion = 0;
+  score = 0;
+  result.textContent = "";
+  showQuestion();
+}
+
   // quiz[0] means:
   // Give me the first item from the quiz array
   //
@@ -75,7 +84,7 @@
 
   options.innerHTML = "";
   question.textContent="";
-  counter.textContent = "";gi
+  counter.textContent = "";
   result.textContent = `Quiz finished! Your score is ${score} out of ${quiz.length}`;
   }
   }
