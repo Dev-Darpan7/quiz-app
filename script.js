@@ -73,10 +73,13 @@ function restartQuiz() {
   function checkAnswer(selectedAnwser) {
     if (selectedAnwser === quiz[currentQuestion].answer){
       result.textContent = "correct";
+      result.style.color="green";
     score++;
     }else {
       result.textContent = "wrong";
+      result.style.color="red";   
     }
+    setTimeout(function () {
   currentQuestion++;
   if(currentQuestion<quiz.length){
   showQuestion();}
@@ -87,5 +90,6 @@ function restartQuiz() {
   counter.textContent = "";
   result.textContent = `Quiz finished! Your score is ${score} out of ${quiz.length}`;
   }
+    
+},2000);
   }
-
