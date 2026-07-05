@@ -71,14 +71,22 @@ function restartQuiz() {
   // with the HTML below
 
   function checkAnswer(selectedAnwser) {
+   
     if (selectedAnwser === quiz[currentQuestion].answer){
       result.textContent = "correct";
       result.style.color="green";
-    score++;
+    score++;  
     }else {
       result.textContent = "wrong";
       result.style.color="red";   
     }
+    // Disable buttons AFTER processing the answer
+const buttons = options.querySelectorAll("button");
+
+buttons.forEach(function(button) {
+    button.disabled = true;
+});
+
     setTimeout(function () {
   currentQuestion++;
   if(currentQuestion<quiz.length){
@@ -91,5 +99,5 @@ function restartQuiz() {
   result.textContent = `Quiz finished! Your score is ${score} out of ${quiz.length}`;
   }
     
-},2000);
+  },2000);
   }
