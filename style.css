@@ -63,3 +63,11 @@ h1 {
     background-color: rgb(255, 0, 0);
     border: none;
 }
+/* responsive */
+@media (max-width: 480px) {
+
+  .card {
+    width: 90%;
+  }
+
+}
